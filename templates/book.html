@@ -1,0 +1,86 @@
+{% extends "main.html" %}
+{% block content %}
+{% include "header.html" %}
+	<div class="row divider purple">
+		<div class="col-md-12"></div>
+	</div>
+	<div class="row banner menu">
+		<div class="col-md-11 col-md-offset-1 padding-none">
+			<h1> {{ book.title | truncate(40) }}
+			<figure class="creator">
+				<img src="{{ creator.image }}"/>
+				<figcaption>{{ creator.name }}</figcaption>
+			</figure>
+			</h1>
+
+		</div>
+	</div>
+
+<div class = 'flash'>
+		      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+          
+        <ul>
+        {% for message in messages %}
+            <li> <strong> {{ message }} </strong> </li>
+        {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+</div>
+	<div class="row padding-top padding-bottom">
+		<div class="col-md-1"></div>
+		<div class="col-md-11 padding-none">
+            <a href="{{url_for('showBooks', category_id = category.id)}}">
+				<button class="btn btn-default" id="new-category">
+					<span class="glyphicon glyphicon-book" aria-hidden="true"></span>Back to {{ category.binding }}
+				</button>
+            </a>
+        
+			<a href="{{url_for('editBook', book_id = book.id, category_id = category.id )}}">
+				<button class="btn btn-default" id="new-category-item">
+					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit Book</button>
+			</a>
+			
+            <a href="{{url_for('deleteBook', category_id = category.id, book_id = book.id )}}">
+				<button class="btn btn-default delete" id="delete-category">
+					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete Book
+				</button>
+			</a>
+            
+		<div class="col-md-7"></div>
+	</div>
+	
+	
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-12">
+							<div class="category-item">
+                                <a href="{{url_for('showBook', category_id = category.id, book_id=book.id)}}">
+                                    <img src="{{book.image}}" alt="{{book.title}}" class="img-responsive book"/>
+								</a>
+                                <h2>{{book.title}}</h2>
+								<p>{{book.description}}</p>
+                                <p class="book-detail">Author: {{book.author}}</p>
+                                <p>Category: {{category.binding}}</p>
+                                <p>ISBN: {{book.isbn}} </p>
+								<p>Price: $ {{book.price}}</p>
+                                <p>Published: {{book.published}}</p>
+                                {% if book.fiction == None %}
+                                    <p>&nbsp;</p> 
+                                {% else %}
+                                    {% if book.fiction == 'True' %}
+                                    <p>Fiction</p>          
+                                    {% else %}
+                                    <p>Non-Fiction</p>
+                                    {% endif %}
+                                                                                            
+                                {% endif %}
+							</div>
+						
+								
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+{% endblock %}
