@@ -1,36 +1,35 @@
-##Book Catalog Project
+##Hosting a webserver - project 5
 
 ###What is it?
 
-Daniel McVicker's solution for Udacity Full-Stack Nanodegree project 3.
+Daniel McVicker's solution for Udacity Full-Stack Nanodegree project 5.
 
 This is a book catalog that demonstrates basic CRUD (create, read, update, delete) functionality, along with some basic 
-image handling, JSON and XML API endpoints, Oauth2 providers, csv parsing and some other concepts.
+image handling, JSON and XML API endpoints, Oauth2 providers, csv parsing and some other concepts deployed to Amazon's AWS service.
 
-###Prerequisites
+###Information
 
-See the requirements.txt file for the modules and libraries I used. Note that this project has not been tested with any other
-versions. You may wish to use vagrant to launch the project as it will simplify things considerably--see the directions in
-the setup section below.
+* You can take a look at the server at 52.88.93.141 on port 2200. 
+* You can use the application at http://52.88.93.141/
 
-####Some notable modules that were used: 
-* Flask 0.10.1
-* Flask-SeaSurf 0.2.1
-* Jinja2 2.7.2
-* SQLAlchemy 0.8.4
-* Werkzeug 0.9.4
-* dict2xml 1.4
-* html5lib 0.999
-* httplib2 0.9.1
-* itsdangerous 0.22
-* jsonpatch 1.3
-* jsonpointer 1.0
-* oauth 1.0.1
-* oauth2client 1.4.12
-* simplejson 3.3.1
-* unicodecsv 0.14.1
+####Some notable software that was installed and config changes made:
+* Apache + mod_wsgi
+* PSQL
+* Setup and configured grader user
+* updating installed packages using apt-get
+* changed firewall configuration to secure
+* installed fail2ban (very useful when restarting the box)
+* verified that local timezone was set to UTC
+* git
+* Flask
+* pip
+* glances + pysensors
+* use "history" command for full list of me stumbling around. 
 
-See the requirements.txt file for the full list. 
+###Resources used: 
+https://github.com/stueken/FSND-P5_Linux-Server-Configuration and the resources linked to in that walkthrough were mostly enough. Some stray google searches for specific issues were also used to refresh my memory.
+
+Something I figured out along the way: https://discussions.udacity.com/t/boolean-gotchas-in-psql-vs-sqlite/46737
 
 ###Installation
 
